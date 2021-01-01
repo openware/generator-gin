@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "MoD",
+      "authorEmail": "lbellet@openware.com",
+      "authorUrl": ""
+    }
+  }
+}
