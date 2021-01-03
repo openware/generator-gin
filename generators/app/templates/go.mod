@@ -1,4 +1,4 @@
-module github.com/openware/igonic
+module <%= gopkg %>
 
 go 1.15
 

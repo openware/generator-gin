@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/openware/igonic/models"
-	"github.com/openware/igonic/pkg/utils"
+	"<%= gopkg %>/models"
+	"<%= gopkg %>/pkg/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"

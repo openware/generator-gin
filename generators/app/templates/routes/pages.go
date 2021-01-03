@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/gomarkdown/markdown"
-	"github.com/openware/igonic/models"
+	"<%= gopkg %>/models"
 	"gorm.io/gorm"
 )
 
