@@ -1,4 +1,4 @@
-module github.com/openware/igonic
+module <%= git_domain %>/<%= organization %>/<%= project %>
 
 go 1.15
 

@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/gomarkdown/markdown"
-	"github.com/openware/igonic/models"
+	"<%= git_domain %>/<%= organization %>/<%= project %>/models"
 	"gorm.io/gorm"
 )
 

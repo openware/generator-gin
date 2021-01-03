@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/openware/igonic/config"
-	"github.com/openware/igonic/routes"
+	"<%= git_domain %>/<%= organization %>/<%= project %>/config"
+	"<%= git_domain %>/<%= organization %>/<%= project %>/routes"
 
 	"github.com/foolin/goview/supports/ginview"
 	"github.com/gin-gonic/gin"

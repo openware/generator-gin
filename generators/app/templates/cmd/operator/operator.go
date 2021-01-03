@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/openware/igonic/config"
+	"<%= git_domain %>/<%= organization %>/<%= project %>/config"
 )
 
 var cfg config.Config

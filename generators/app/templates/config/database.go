@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/openware/igonic/models"
-	"github.com/openware/igonic/pkg/utils"
+	"<%= git_domain %>/<%= organization %>/<%= project %>/models"
+	"<%= git_domain %>/<%= organization %>/<%= project %>/pkg/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
