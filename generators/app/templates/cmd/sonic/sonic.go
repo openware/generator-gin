@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-  "github.com/foolin/goview/supports/ginview"
+  	"github.com/foolin/goview/supports/ginview"
 	"github.com/gin-gonic/gin"
-	"<%= gopkg %>/config"
-	"<%= gopkg %>/routes"
+	"<%= package %>/config"
+	"<%= package %>/routes"
 )
 
 var cfg config.Config

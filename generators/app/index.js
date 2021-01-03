@@ -4,20 +4,35 @@ const chalk = require("chalk");
 const yosay = require("yosay");
 const glob = require("glob");
 
+function git(ptr) {
+  ptr.spawnCommandSync("git", ["init", "--quiet"], {
+    cwd: ptr.destinationPath()
+  });
+
+  ptr.spawnCommandSync("git", ["add", "."], {
+    cwd: ptr.destinationPath()
+  });
+
+  ptr.spawnCommandSync("git", ["ci", "-m", "Initial commit: yo gin"], {
+    cwd: ptr.destinationPath()
+  });
+
+  const remote = `git@${ptr.props.package}.git`;
+  ptr.spawnCommandSync("git", ["remote", "add", "origin", remote], {
+    cwd: ptr.destinationPath()
+  });
+}
+
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option("nogit");
-    this.argument("project", { type: String, required: false });
-    this.argument("organization", { type: String, required: false });
-    this.argument("githost", { type: String, required: false });
+    this.option("git", { desc: "Git init", type: Boolean, default: true });
+    this.argument("package", { desc: "Package URL", type: String, required: false });
 
     this.props = {
-      nogit: this.options.nogit,
-      project: this.options.project,
-      organization: this.options.organization,
-      githost: this.options.githost
+      git: this.options.git,
+      package: this.options.package
     };
   }
 
@@ -31,30 +46,12 @@ module.exports = class extends Generator {
 
     const prompts = [];
 
-    if (!this.props.project) {
+    if (!this.props.package) {
       prompts.push({
         type: "input",
-        name: "project",
-        message: "Your project name",
-        default: this.appname // Default to current folder name
-      });
-    }
-
-    if (!this.props.organization) {
-      prompts.push({
-        type: "input",
-        name: "organization",
-        message: "Your Organization name",
-        default: "openware"
-      });
-    }
-
-    if (!this.props.githost) {
-      prompts.push({
-        type: "input",
-        name: "githost",
-        message: "Your git hosting domain name",
-        default: "github.com"
+        name: "package",
+        message: "Your golang package url",
+        default: "github.com/openware/" + this.appname
       });
     }
 
@@ -68,42 +65,18 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.log(`project: ${this.props.project}`);
-    this.log(`organization: ${this.props.organization}`);
-    this.log(`githost: ${this.props.githost}`);
+    this.log(`package: ${this.props.package}`);
 
     this.fs.copyTpl(
       glob.sync(this.templatePath("**/*"), { dot: true }),
       this.destinationPath(),
-      {
-        ...this.props,
-        gopkg: `${this.props.githost}/${this.props.organization}/${this.props.project}`
-      }
+      this.props
     );
   }
 
-  git() {
-    this.spawnCommandSync("git", ["init", "--quiet"], {
-      cwd: this.destinationPath()
-    });
-
-    this.spawnCommandSync("git", ["add", "."], {
-      cwd: this.destinationPath()
-    });
-
-    this.spawnCommandSync("git", ["ci", "-m", "Initial commit: yo gin"], {
-      cwd: this.destinationPath()
-    });
-
-    const remote = `git@${this.props.githost}:${this.props.organization}/${this.props.project}.git`;
-    this.spawnCommandSync("git", ["remote", "add", "origin", remote], {
-      cwd: this.destinationPath()
-    });
-  }
-
   end() {
-    if (!this.props.nogit) {
-      this.git();
+    if (this.props.git) {
+      git(this);
     }
 
     this.spawnCommandSync("make", [], {
