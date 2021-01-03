@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"<%= gopkg %>/models"
-	"<%= gopkg %>/pkg/utils"
+	"<%= package %>/models"
+	"<%= package %>/pkg/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
