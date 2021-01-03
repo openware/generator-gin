@@ -1,4 +1,4 @@
-module <%= git_domain %>/<%= organization %>/<%= project %>
+module <%= gopkg %>
 
 go 1.15
 

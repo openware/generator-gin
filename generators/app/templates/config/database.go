@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"<%= git_domain %>/<%= organization %>/<%= project %>/models"
-	"<%= git_domain %>/<%= organization %>/<%= project %>/pkg/utils"
+	"<%= gopkg %>/models"
+	"<%= gopkg %>/pkg/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"

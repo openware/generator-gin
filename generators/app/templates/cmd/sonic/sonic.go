@@ -6,8 +6,8 @@ import (
 
   "github.com/foolin/goview/supports/ginview"
 	"github.com/gin-gonic/gin"
-	"<%= git_domain %>/<%= organization %>/<%= project %>/config"
-	"<%= git_domain %>/<%= organization %>/<%= project %>/routes"
+	"<%= gopkg %>/config"
+	"<%= gopkg %>/routes"
 )
 
 var cfg config.Config
