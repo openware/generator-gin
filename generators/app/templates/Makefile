@@ -1,4 +1,4 @@
-APPS     :=	edge operator
+APPS     :=	sonic
 
 all:	$(APPS)
 

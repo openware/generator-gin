@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"os"
 
+  "github.com/foolin/goview/supports/ginview"
+	"github.com/gin-gonic/gin"
 	"<%= git_domain %>/<%= organization %>/<%= project %>/config"
+	"<%= git_domain %>/<%= organization %>/<%= project %>/routes"
 )
 
 var cfg config.Config
@@ -27,13 +30,37 @@ func seed() {
 	config.LoadSeeds(db)
 }
 
+func serve(){
+	var cfg config.Config
+	var app = gin.Default()
+
+	config.Parse(&cfg)
+	// Serve static files
+	app.Static("/public", "./public")
+
+	// Set up view engine
+	app.HTMLRender = ginview.Default()
+
+	// View routes
+	routes.SetUp(app)
+
+	// Connect to the database server with the config/app.yaml configure
+	db := config.ConnectDatabase(cfg.Database.Name)
+	if !cfg.SkipMigrate {
+		config.RunMigrations(db)
+	}
+	routes.SetPageRoutes(db, app)
+	app.Run(":" + cfg.Port)
+}
+
 func usage() {
 	fmt.Println(`
 Usage: operator
 
-db:create		Create database
-db:migrate		Migrate database
-db:seed			Seed database`)
+serve       Start the web server
+db:create	  Create database
+db:migrate  Migrate database
+db:seed     Seed database`)
 	os.Exit(1)
 }
 
@@ -47,9 +74,13 @@ func main() {
 
 	switch os.Args[1] {
 
-	case "db:create":
+  case "serve", "server":
+    serve()
+
+  case "db:create":
 		create()
-	case "db:migrate":
+
+  case "db:migrate":
 		fmt.Println("Database migrate")
 		migrate()
 
