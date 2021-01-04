@@ -23,4 +23,4 @@ COPY --from=builder /build/bin/* ./bin/
 COPY --from=builder /build/views/ ./views/
 COPY --from=builder /build/config/app.yml ./config/app.yml
 
-ENTRYPOINT ./bin/edge
+ENTRYPOINT ./bin/sonic

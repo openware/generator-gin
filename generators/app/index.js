@@ -91,7 +91,7 @@ module.exports = class extends Generator {
       cwd: this.destinationPath()
     });
 
-    this.spawnCommandSync("git", ["ci", "-m", "Initial commit: yo gin"], {
+    this.spawnCommandSync("git", ["commit", "-m", "Initial commit: yo gin"], {
       cwd: this.destinationPath()
     });
 
