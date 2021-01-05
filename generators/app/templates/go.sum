@@ -55,8 +55,11 @@ github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742/go.mod h1:bx2lN
 github.com/modern-go/reflect2 v1.0.1/go.mod h1:bx2lNnkwVCuqBIxFjflWJWanXIb3RllmbCylyMrvgv0=
 github.com/nkovacs/streamquote v0.0.0-20170412213628-49af9bddb229/go.mod h1:0aYXnNPJ8l7uZxf45rWW1a/uME32OF0rhiYGNQ2oF2E=
 github.com/openware/pkg v0.0.0-20201227215455-42f6dbe4232f h1:2IJpnhm3q1X93Ylgk7EPo5EBQYZcyYXMwV6GUD6iP30=
+github.com/openware/pkg v0.0.0-20210104181353-38a5b9bb7387 h1:EbVsUEEj3GN5Q3ruHmXTRc4/h+zztOlZYb6QhMmFPCs=
 github.com/openware/pkg/ika v0.0.0-20201227221439-a7457b5a5f91 h1:pbzxqT+iL8hFQbPTzQuucCanun8n7pl5y+bhIkTpgik=
 github.com/openware/pkg/ika v0.0.0-20201227221439-a7457b5a5f91/go.mod h1:8Gf39BJibV3+xVFSga1Nda5s1e8yw5fa10+mKqo67q4=
+github.com/openware/pkg/utils v0.0.0-20210104181353-38a5b9bb7387 h1:jyDPCXcf6ipwPoGuLcH/tp5VtlfQRFqaNVdYVZxk52M=
+github.com/openware/pkg/utils v0.0.0-20210104181353-38a5b9bb7387/go.mod h1:qQ2CAwy6NM/jONyxcv4WEa5NLC1IdodG/cvdmptYFpA=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sirupsen/logrus v1.7.0 h1:ShrD1U9pZB12TX0cVy0DtePoCH97K8EtX+mg7ZARUtM=
 github.com/sirupsen/logrus v1.7.0/go.mod h1:yWOB1SBYBC5VeMP7gHvWumXLIWorT60ONWic61uBYv0=
