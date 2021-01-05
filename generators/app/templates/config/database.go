@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"<%= gopkg %>/models"
-	"<%= gopkg %>/pkg/utils"
+	"github.com/openware/pkg/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
