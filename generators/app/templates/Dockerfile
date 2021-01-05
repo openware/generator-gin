@@ -1,4 +1,4 @@
-FROM golang:1.15-alpine AS builder
+FROM golang:1.15-alpine AS go-builder
 
 WORKDIR /build
 ENV CGO_ENABLED=1 \
@@ -14,13 +14,22 @@ COPY . .
 
 RUN make all
 
+
+FROM node:15.5.0 AS react-builder
+
+WORKDIR /react-build
+
+COPY . .
+RUN make react
+
 #Runner
 FROM alpine:3.12
 
 WORKDIR /app
 
-COPY --from=builder /build/bin/* ./bin/
-COPY --from=builder /build/views/ ./views/
-COPY --from=builder /build/config/app.yml ./config/app.yml
+COPY --from=go-builder /build/bin/* ./bin/
+COPY --from=go-builder /build/views/ ./views/
+COPY --from=go-builder /build/config/app.yml ./config/app.yml
+COPY --from=react-builder /react-build/client/build/* ./public/assets/
 
-ENTRYPOINT ./bin/sonic
+ENTRYPOINT ./bin/sonic serve

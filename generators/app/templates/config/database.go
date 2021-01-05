@@ -3,7 +3,7 @@ package config
 import (
 	"log"
 
-	"github.com/openware/sonic/models"
+	"<%= gopkg %>/models"
 	"gorm.io/gorm"
 )
 
