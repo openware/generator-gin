@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
-
-  "github.com/foolin/goview/supports/ginview"
+	
+	"github.com/foolin/goview/supports/ginview"
+	"github.com/openware/pkg/database"
 	"github.com/gin-gonic/gin"
 	"<%= gopkg %>/config"
 	"<%= gopkg %>/routes"
@@ -14,19 +15,19 @@ var cfg config.Config
 
 func create() {
 	// Connect to the database server with out specify the database.
-	db := config.ConnectDatabase("")
+	db := database.ConnectDatabase("")
 	db = db.Exec(fmt.Sprintf("CREATE DATABASE `%s`;", cfg.Database.Name))
 }
 
 func migrate() {
 	// Connect to the database server with the config/app.yaml configure
-	db := config.ConnectDatabase(cfg.Database.Name)
+	db := database.ConnectDatabase(cfg.Database.Name)
 	config.RunMigrations(db)
 }
 
 func seed() {
 	// Connect to the database server with the config/app.yaml configure
-	db := config.ConnectDatabase(cfg.Database.Name)
+	db := database.ConnectDatabase(cfg.Database.Name)
 	config.LoadSeeds(db)
 }
 
@@ -45,7 +46,7 @@ func serve(){
 	routes.SetUp(app)
 
 	// Connect to the database server with the config/app.yaml configure
-	db := config.ConnectDatabase(cfg.Database.Name)
+	db := database.ConnectDatabase(cfg.Database.Name)
 	if !cfg.SkipMigrate {
 		config.RunMigrations(db)
 	}
